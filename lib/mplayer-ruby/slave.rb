@@ -18,6 +18,8 @@ module MPlayer
 
       mplayer_options = "-slave -quiet"
       mplayer_options += " -vf screenshot" if options[:screenshot]
+      mplayer_options += " -shuffle" if options[:shuffle]
+      mplayer_options += " -playlist" if options[:playlist]
 
       mplayer = "#{options[:path]} #{mplayer_options} #{@file}"
       @pid,@stdin,@stdout,@stderr = Open4.popen4(mplayer)
